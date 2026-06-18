@@ -141,66 +141,60 @@
 
                 <!-- Mock Lead Gen Action / Form Integration -->
                 <!-- Change action to your webhook engine or Formspree/Formspark backend link -->
-                <form action="#" method="POST" class="mt-6 space-y-4" onsubmit="handleFormSubmit(event)">
-                    <div>
-                        <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider">Business Email</label>
-                        <input id="modal-email" type="email" required class="w-full mt-1.5 px-3 py-2 rounded bg-slate-800 border border-slate-700 text-white text-sm focus:outline-none focus:ring-1 focus:ring-blue-500">
-                    </div>
+                <form action="https://formspree.io/f/mrevwyoq" method="POST" class="mt-6 space-y-4">
+    <div>
+        <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider">Business Email</label>
+        <input type="email" name="email" required class="w-full mt-1.5 px-3 py-2 rounded bg-slate-800 border border-slate-700 text-white text-sm focus:outline-none focus:ring-1 focus:ring-blue-500">
+    </div>
 
-                    <div>
-                        <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider">Primary Reporting Environment Target</label>
-                        <select required class="w-full mt-1.5 px-3 py-2 rounded bg-slate-800 border border-slate-700 text-slate-300 text-sm focus:outline-none focus:ring-1 focus:ring-blue-500">
-                            <option value="" disabled selected>Select an option</option>
-                            <option value="sheets">Google Sheets Spreadsheet</option>
-                            <option value="powerbi">Microsoft Power BI Workspace</option>
-                            <option value="excel">Excel Online / SharePoint</option>
-                            <option value="warehouse">Raw SQL Database Warehouse (Postgres/BigQuery)</option>
-                        </select>
-                    </div>
+    <div>
+        <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider">Primary Reporting Environment Target</label>
+        <select name="reporting_target" required class="w-full mt-1.5 px-3 py-2 rounded bg-slate-800 border border-slate-700 text-slate-300 text-sm focus:outline-none focus:ring-1 focus:ring-blue-500">
+            <option value="" disabled selected>Select an option</option>
+            <option value="Google Sheets">Google Sheets Spreadsheet</option>
+            <option value="Power BI">Microsoft Power BI Workspace</option>
+            <option value="Excel Online">Excel Online / SharePoint</option>
+            <option value="SQL Warehouse">Raw SQL Database Warehouse (Postgres/BigQuery)</option>
+        </select>
+    </div>
 
-                    <div>
-                        <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider">Approximate Fleet / Monthly Job Scale</label>
-                        <select required class="w-full mt-1.5 px-3 py-2 rounded bg-slate-800 border border-slate-700 text-slate-300 text-sm focus:outline-none focus:ring-1 focus:ring-blue-500">
-                            <option value="" disabled selected>Select operational volume</option>
-                            <option value="small">Under 250 jobs / month</option>
-                            <option value="mid">250 - 1,000 jobs / month</option>
-                            <option value="large">1,000+ jobs / month</option>
-                        </select>
-                    </div>
+    <div>
+        <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider">Approximate Fleet / Monthly Job Scale</label>
+        <select name="monthly_volume" required class="w-full mt-1.5 px-3 py-2 rounded bg-slate-800 border border-slate-700 text-slate-300 text-sm focus:outline-none focus:ring-1 focus:ring-blue-500">
+            <option value="" disabled selected>Select operational volume</option>
+            <option value="Under 250 jobs">Under 250 jobs / month</option>
+            <option value="250 - 1000 jobs">250 - 1,000 jobs / month</option>
+            <option value="1000+ jobs">1,000+ jobs / month</option>
+        </select>
+    </div>
 
-                    <div class="pt-4">
-                        <button type="submit" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-semibold py-2.5 rounded text-sm transition">
-                            Reserve My Cohort Placement
-                        </button>
-                    </div>
-                </form>
+    <div class="pt-4">
+        <button type="submit" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-semibold py-2.5 rounded text-sm transition">
+            Reserve My Spot
+        </button>
+    </div>
+</form>
             </div>
         </div>
     </div>
 
     <!-- UI State Control Script -->
     <script>
-        function toggleModal() {
-            const body = document.querySelector('body');
-            const modal = document.querySelector('#signup-modal');
-            modal.classList.toggle('opacity-0');
-            modal.classList.toggle('pointer-events-none');
-            body.classList.toggle('modal-active');
-        }
+    function toggleModal() {
+        const body = document.querySelector('body');
+        const modal = document.querySelector('#signup-modal');
+        modal.classList.toggle('opacity-0');
+        modal.classList.toggle('pointer-events-none');
+        body.classList.toggle('modal-active');
+    }
 
-        function openModalWithEmail() {
-            const heroEmail = document.getElementById('hero-email').value;
-            if (heroEmail) {
-                document.getElementById('modal-email').value = heroEmail;
-            }
-            toggleModal();
+    function openModalWithEmail() {
+        const heroEmail = document.getElementById('hero-email').value;
+        if (heroEmail) {
+            document.getElementById('modal-email').value = heroEmail;
         }
-
-        function handleFormSubmit(e) {
-            e.preventDefault();
-            alert('Success! Your placeholder validation submission has run successfully. Connect this form tag to an active endpoint engine (like Formspree or Formspark) to store inputs.');
-            toggleModal();
-        }
-    </script>
+        toggleModal();
+    }
+</script>
 </body>
 </html>
